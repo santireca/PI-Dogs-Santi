@@ -12,7 +12,7 @@ const Home = () => {
     const allDogs = useSelector((state) => state.dogs)
     const [ order, setOrder ] = useState('');
     const [temperament, setTemperament]= useState('all')
-    const [ orderWeight, setOrderWeight ] = useState('');
+    // const [ orderWeight, setOrderWeight ] = useState('');
     const [ currentPage, setCurrentPage ] = useState(1);
     const [ dogsPerPage, setDogsPerPage ] = useState(8);
     const indexOfLastDog = currentPage *  dogsPerPage;
@@ -52,11 +52,10 @@ const Home = () => {
         setOrder(`Ordered ${event.target.value}`)
     }
 
-    const handleSortByWeight = (event) => {
-        event.preventDefault();
-        dispatch(orderByWeight(event.target.value));
+    const handleSortByWeight = (event) =>{
+        dispatch(orderByWeight(event.target.value))
         setCurrentPage(1);
-        setOrderWeight(`Ordered ${event.target.value}`)
+        setOrder(`Ordered ${event.target.value}`);
     }
     
     const handleFilterByTemper= (event) => {
@@ -77,9 +76,17 @@ const Home = () => {
                     <option value='down' >Z-A</option>
                 </select>
 
-                <select onChange={handleSortByWeight}>
-                    <option value='min' >Min - Max</option>
-                    <option value='max' >Max - Min</option>
+                <div>Weight Ordering</div>
+                <select defaultValue="weight" onChange={event =>{handleSortByWeight(event)}}>
+                    <option value="weight" disabled selected></option>
+                    <option value="min">From lighter to heavier</option>
+                    <option value="max">From heavier to lighter</option>
+                </select>
+                <div>Average weight</div>
+                <select defaultValue="aver" onChange={event =>{handleSortByWeight(event)}}>
+                    <option value="aver" disabled selected></option>
+                    <option value="ave">Order from lighter to heavier</option>
+                    <option value="ave-max">Order from heavier to lighter</option>
                 </select>
                 
                 <select value={ temperament } onChange={ event => {handleFilterByTemper(event)} }>
@@ -106,7 +113,7 @@ const Home = () => {
                 {
                     currentDogs && currentDogs.map(dog => {
                         return (
-                            <DogCard name = {dog.name} image = {dog.image} temperament = {dog.temperament} weight = {dog.weight.metric} />
+                            <DogCard id = {dog.id} key = {dog.id} name = {dog.name} image = {dog.image} temperament = {dog.temperament} weightMin= {dog.weightMin} weightMax= {dog.weightMax} averageWeight= {dog.averageWeight} />
                         )
                     })
                 }

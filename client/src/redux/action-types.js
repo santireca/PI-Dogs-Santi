@@ -1,5 +1,5 @@
 export const GET_DOGS = 'ALL_DOGS'
-export const DOG_DETAIL="DOG_DETAIL"
+export const GET_DOG_DETAIL= "GET_DOG_DETAIL"
 export const FILTER_BY_CREATION = 'FILTER_BY_CREATION'
 export const ORDER_BY_NAME = 'ORDER_BY_NAME'
 export const ORDER_BY_WEIGHT = 'ORDER_BY_WEIGHT'

@@ -1,19 +1,10 @@
 import axios from 'axios';
-import { GET_DOGS, DOG_DETAIL, GET_BY_NAME, FILTER_BY_CREATION, ORDER_BY_NAME, ORDER_BY_WEIGHT, FILTER_BY_TEMPER, GET_TEMPERAMENTS_LIST } from './action-types';
+import { GET_DOGS, GET_DOG_DETAIL, GET_BY_NAME, FILTER_BY_CREATION, ORDER_BY_NAME, ORDER_BY_WEIGHT, FILTER_BY_TEMPER, GET_TEMPERAMENTS_LIST } from './action-types';
 
 export const getAllDogs = () => {
     return async function(dispatch){
         let json = await axios.get('http://localhost:3001/dogs')
         return dispatch({ type: GET_DOGS, payload: json.data })
-    }
-}
-
-export const getdogDetail=(id)=>{
-    return async function(dispatch){
-        let json= await axios.get(`http://localhost:3001/dogs/${id}`)
-        return dispatch({
-            type: DOG_DETAIL, payload: json.data
-        })
     }
 }
 
@@ -28,6 +19,17 @@ export const getDogsByName = (payload) => {
         } catch (error) {
             console.log(error)
         }
+    }
+}
+
+export const getDogDetail= (id)=> {
+    return async function(dispatch){
+        let json = await axios (`http://localhost:3001/dogs/${id}`)
+
+        return dispatch({
+            type: GET_DOG_DETAIL,
+            payload: json.data
+            })
     }
 }
 

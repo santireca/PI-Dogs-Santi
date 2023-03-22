@@ -1,28 +1,32 @@
-import { getdogDetail } from "../../redux/actions"
-import { useDispatch, useSelector } from "react-redux"
-import { useEffect } from "react"
-import { useParams, Link } from "react-router-dom"
-const Detail=()=>{
-    const dispatch= useDispatch()
-    const {id}= useParams()
-    const dogsDetail= useSelector((state)=>state.dogsDetail)
+import React from 'react';
+import { getDogDetail } from '../../redux/actions';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
-    useEffect(()=>{
-        dispatch(getdogDetail(id))
-    },[])
-    return(
+
+const Detail = () => {
+    let dispatch = useDispatch();
+    let { id } = useParams();
+    const dogDetail = useSelector((state) => state.dogDetail);
+
+    useEffect(() => {
+    dispatch(getDogDetail(id))
+    }, [])
+
+    return (
         <div>
-            <h1>DETAIL</h1>
-            <img src={dogsDetail?.image} alt={dogsDetail?.name}/>
-            <h2>name: {dogsDetail?.name}</h2>
-            <h3>años de vida: {dogsDetail?.life_span}</h3>
-            <h4>peso: {dogsDetail?.weight?.metric}cm</h4>
-            <h4>altura: {dogsDetail?.height?.metric}cm</h4>
-            <h4>Temperamentos: {dogsDetail?.temperament}</h4>
-            <h5>id: {dogsDetail?.id}</h5>
-            <Link to={"/home"}><button>Home</button></Link>
+            <h3>Id: {dogDetail?.id}</h3>
+            <h1>Breed: {dogDetail?.name}</h1>
+            <img src={dogDetail?.image ? dogDetail.image : "img"} alt="img" />
+            <h3>Weight:</h3>
+            <span>Min: {dogDetail?.weightMin}</span> - <span>Max: {dogDetail?.weightMax}</span>
+            <h3>Average weight: {dogDetail?.averageWeight}</h3> 
+            <h3>Height (min - max): {dogDetail?.height?.metric}</h3>
+            <h3>Life expectancy: {dogDetail?.life_span}</h3>    
+            <h3>Temperament: {dogDetail?.temperament}</h3>
         </div>
     )
 }
 
-export default Detail
+export default Detail;

@@ -13,17 +13,53 @@ const router = Router();
 
 const getApiInfo = async () => {
     const urlApi = await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`)
-    const infoApi = await urlApi.data.map(element => {
-        return {
-            id: element.id,
-            image: element.image.url,
-            name: element.name,
-            temperament: element.temperament,
-            weight: element.weight,
-            origin: element.origin,
+    let infoApi= await urlApi.data.map((inst)=>{
+        let weightMin = parseInt(inst.weight.metric.slice(0, 2).trim()); 
+        let weightMax = parseInt(inst.weight.metric.slice(4).trim());
+        let averageWeight = weightMax + weightMin
+    
+        if (weightMin && weightMax) {
+            weightMin = weightMin;
+            weightMax = weightMax;
+            averageWeight= averageWeight / 2;
+
+        } else if (weightMin && !weightMax) {
+            weightMin = weightMin;
+            weightMax = weightMin;
+            averageWeight= ((weightMax) + (weightMin)) / 2;
+
+        } else if (!weightMin && weightMax) {
+            weightMin = weightMax;
+            weightMax = weightMax;
+            averageWeight= ((weightMax) + (weightMin)) / 2;
+
+        } else {
+            if (inst.name === "Smooth Fox Terrier") {
+                weightMin = 6;
+                weightMax = 9;
+                averageWeight= ((weightMax) + (weightMin)) / 2;
+
+            } else {
+                weightMin = 20;
+                weightMax = 30;
+                averageWeight= ((weightMax) + (weightMin)) / 2;
+
+            }
         }
-        
-    })
+        // console.log(inst.weight.metric.length<=3&&inst.id)
+
+    return {
+    id: inst.id,
+    weightMin: weightMin,
+    weightMax: weightMax,
+    averageWeight: averageWeight,
+    height: inst.height,
+    name: inst.name,
+    life_span: inst.life_span,
+    image: inst.image.url,
+    temperament: inst.temperament
+    }
+});
     return infoApi;
 }
 
