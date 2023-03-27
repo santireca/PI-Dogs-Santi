@@ -35,7 +35,7 @@
 }
 
 .h1 {
-    color: #e68d48;
+    color: #ea9c3b;
     padding-top: 0;
     margin: 0%;
     font-size: 4rem;
@@ -45,7 +45,8 @@
 
 .landingButton {
     color: black;
-    background-color: #e68d48;
+    /* background-color: #e68d48; */
+    background-color: #ea9c3b;
     font-size: 1rem;
     margin-top: 15px;
     padding: .5rem 2rem .5rem 2rem;
@@ -53,7 +54,9 @@
     border-color: transparent;
     cursor: pointer;
     font-family: 'Be Vietnam Pro', sans-serif;
-    
+    transition: 
+        background-color 200ms linear,
+        transform 200ms linear;
 }
 
 .landingButton:hover {

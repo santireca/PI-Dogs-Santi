@@ -1,83 +1,52 @@
-import { GET_DOGS, GET_DOG_DETAIL, GET_BY_NAME, FILTER_BY_CREATION, ORDER_BY_NAME, ORDER_BY_WEIGHT, GET_TEMPERAMENTS_LIST, FILTER_BY_TEMPER } from "./action-types";
+import { FILTER_BY_ORIGIN, GET_ALL_BREEDS, ORDER_BY_NAME, ORDER_BY_WEIGHT, FILTER_BY_TEMPER, GET_ALL_TEMPS, GET_DOGS_BY_NAME, GET_NAME, GET_DOG_DETAIL, CREATE_DOG, SET_CURRENT_PAGE} from "../redux/action-types";
+
+//here I create my reducer which will handle my global state
 
 const initialState = {
-    dogs: [],
-    allDogs: [],
-    temperaments: [],
+    dogs: [], //this would be like a current
     dogDetail: {},
+    temperaments: [],
+    allDogs: [], //this is a copy of all dogs which endures
 }
 
 const reducer = (state = initialState, action) => {
-    let aux = [];
+    let aux = []; //auxiliary
 
-    switch(action.type){
-        case GET_DOGS:
+    switch(action.type) {
+        case GET_ALL_BREEDS:
             return {
                 ...state,
                 dogs: action.payload,
                 allDogs: action.payload
             }
 
-        case GET_DOG_DETAIL:
-            return {
-                ...state,
-                dogDetail: action.payload
-            }
-
-        case GET_BY_NAME:
-            return {
-                ...state,
-                dogs: action.payload
-            }
-
-        case FILTER_BY_CREATION:
-            
-            const createdFilter = action.payload === 'createInDb' ? state.allDogs.filter((dog) => dog.createInDb) : state.allDogs.filter((dog) => !dog.createInDb)
-            return {
-                ...state,
-                dogs: action.payload === 'all' ? state.allDogs : createdFilter
-            }
-
-        case ORDER_BY_NAME:
-            let sortedByName = action.payload === 'up' ?
-            state.dogs.sort( function (a, b) {
-                if(a.name > b.name) {
-                    return 1;
-                }
-                if(b.name > a.name){
-                    return -1;
-                }
-                return 0;
-            }) :
-            state.dogs.sort( function (a, b) {
-                if(a.name > b.name) {
-                    return -1;
-                }
-                if(b.name > a.name){
-                    return 1;
-                }
-                return 0;
-            })
-            return {
-                ...state,
-                dogs: sortedByName
-            }
-
-        case GET_TEMPERAMENTS_LIST:
+        case GET_ALL_TEMPS:
             return {
                 ...state,
                 temperaments: action.payload,
-            };
+            }
 
-        case FILTER_BY_TEMPER:
-            let dogsWithChosenTemps= action.payload  === "all" ? state.allDogs :
-            state.allDogs?.filter(dog=> {
-                if(!dog.temperament) return undefined;
-                return dog.temperament.split(", ").includes(action.payload)
+        case ORDER_BY_NAME:
+            let ordered= action.payload === "a-z" ? state.dogs.sort((a, b) => {
+                if (a.name > b.name) {
+                    return 1;
+                }
+                if (b.name > a.name) {
+                    return -1;
+                }
+                return 0;
+            }) : state.dogs.sort((a, b) => {
+                if (a.name > b.name) {
+                    return -1;
+                }
+                if (b.name > a.name) {
+                    return 1;
+                }
+                return 0;
             })
             return {
                 ...state,
-                dogs: dogsWithChosenTemps
+                dogs: ordered
             }
 
         case ORDER_BY_WEIGHT: 
@@ -106,19 +75,74 @@ const reducer = (state = initialState, action) => {
                     return 0;
                 })
             } else {
-                console.log('Error')
+                console.log("error")
             }
 
-            return {
+            return{
                 ...state,
                 dogs: aux
             }
         
-
-        default:
-                return {...state}
-    }
     
-}
 
+        case FILTER_BY_ORIGIN:
+            // const allDogs = state.allDogs;
+            const filteredOrigin= action.payload === "from_DB" ? state.allDogs.filter( inst => inst.from_DB) : state.allDogs.filter(inst=> !inst.from_DB);
+            return {
+                ...state,
+                dogs: action.payload === "All" ? state.allDogs : filteredOrigin
+        }
+
+        case FILTER_BY_TEMPER:
+            let dogsWithChosenTemps =
+                action.payload === "all"
+                ? state.allDogs
+                : state.allDogs?.filter((dog) => {
+                if (!dog.temperament) return undefined;
+                else return dog.temperament.split(", ").includes(action.payload);
+                });
+            return {
+                ...state,
+                dogs: dogsWithChosenTemps,
+        };
+
+        
+        case GET_DOGS_BY_NAME:
+            return {
+                ...state,
+                dogs: action.payload
+            }
+
+        case GET_NAME:
+            let name= action.payload === "" ? state.allDogs : state.dogs.filter(inst =>
+                inst.name.toLowerCase().includes(action.payload.toLowerCase())
+            )
+            return {
+                ...state,
+                dogs: name
+            }
+        
+        case GET_DOG_DETAIL:
+            return {
+                ...state,
+                dogDetail: action.payload
+            }
+        case CREATE_DOG:
+            return {
+                ...state,
+            }
+
+        case SET_CURRENT_PAGE: {
+            return {
+                ...state,
+                currentPage: action.payload
+            }
+        }
+            
+        default:
+            return {
+                ...state,
+    }
+}
+}
 export default reducer;

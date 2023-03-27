@@ -1,61 +1,15 @@
-const {Router}= require("express")
-const {getDogs, findDogs, getDogByID, createNewDog}=require('../controllers/dogsController')
+const { Router } =  require ("express");
 
-const dogsRouter = Router()
+//I create the dogs router, which will call all the handlers with req and res which use the dogs routes. For that, I have to require all the handlers which handle the dogs
 
-// dogsRouter.get("/", async (req, res)=>{
-//     const {name} = req.query
-//     let dogs
-//         if(name){
-//             dogs= await findDogs(name)
-//             if(dogs.error) return res.status(404).json(dogs)
-//             return res.status(200).json(dogs)
-//         }else{
-//             dogs= await getDogs()
-//             return res.status(200).json(dogs)
-//         }
-// })
+const { getBreedsHandler, getRazaByIdHandler, createNewDogHandler} = require ("../handlers/dogsHandler")
 
-dogsRouter.get("/", async(req, res)=>{
-    const{name}=req.query
-    let dogs
-    try {
-        if(name){
-            dogs= await findDogs(name)
-            return res.status(200).json(dogs)
-                }else{
-            dogs= await getDogs()
-            return res.status(200).json(dogs)
-                }
-    } catch (error) {
-        res.status(400).json({error: error.message})
-    }
-})
+//dog router
 
+const dogsRouter = Router();
 
-dogsRouter.get("/:id", async(req, res)=>{
-    const {idRaza} = req.params
-    let origin= isNaN(idRaza) ? "db" : "api";
-        
-    try {
-        let result= await getDogByID(idRaza, origin);
-    
-        if(result.error) throw new Error(result.error);
-    
-        res.status(200).json(result)    
-    } catch (error) {
-        res.status(400).json({error: error.message})
-    }
-})
+dogsRouter.get("/", getBreedsHandler);//this handler has to get all breeds. It can receive a query name. In this case, brings just the names. It brings data from an Api and from the DB
+dogsRouter.get("/:idRaza", getRazaByIdHandler); //this handler has to get a breed by id. It can receiveS a param. It can bring data from an Api or from the DB
+dogsRouter.post("/", createNewDogHandler);//this handler has to create a new dog or breed. It has to receive information from the body. It stores the new dogs on the DB
 
-dogsRouter.post("/", async (req, res)=> {
-    let { weight, height, name, life_span, image, temperament }= req.body;
-    try {
-        await createNewDog(weight, height, name, life_span, image, temperament)
-        res.status(200).send("New dog successfully created")
-    } catch (error) {
-        res.status(400).json({error: error.message})
-    }
-}) 
-
-module.exports= dogsRouter
+module.exports = dogsRouter;

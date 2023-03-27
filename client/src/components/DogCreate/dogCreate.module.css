@@ -1,0 +1,251 @@
+.main {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Be Vietnam Pro', sans-serif;;
+}
+
+.formContainer {
+    display: flex;
+    flex-direction: column;
+    background: #0000004f;
+    border-radius: 14px;
+    width: 50%;
+    height: 80%;
+    box-shadow: -1px 15px 30px -12px black;
+    
+}
+
+.bothSides {
+    display: flex;
+    justify-content: center;
+    height: 300px;
+}
+
+.leftSide {
+    width: 45%;
+    padding-left: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    
+}
+
+.rightSide {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-evenly;
+}
+
+.name {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 90%;
+}
+.name label {
+    margin-bottom: .5rem;
+    color: #ea9c3a;
+}
+.name input {
+    background-color: transparent;
+    border: 0;
+    border-bottom: 1px solid #fff;
+    overflow: hidden;
+    color: #c8cac7;
+    width: 100%;
+    outline: none;
+}
+
+.image {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 90%;
+}
+.image label {
+    margin-bottom: .5rem;
+    color: #ea9c3a;
+}
+.image input {
+    background-color: transparent;
+    border: 0;
+    border-bottom: 1px solid #fff;
+    overflow: hidden;
+    color: #c8cac7;
+    width: 100%;
+    outline: none;
+}
+
+.life {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 90%;
+}
+.life label {
+    margin-bottom: .5rem;
+    color: #ea9c3a;
+}
+.life input {
+    background-color: transparent;
+    border: 0;
+    border-bottom: 1px solid #fff;
+    overflow: hidden;
+    color: #c8cac7;
+    width: 100%;
+    outline: none;
+}
+
+.min {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 90%;
+}
+.min label {
+    margin-bottom: .5rem;
+    color: #ea9c3a;
+}
+.min input {
+    background-color: transparent;
+    border: 0;
+    border-bottom: 1px solid #fff;
+    overflow: hidden;
+    color: #c8cac7;
+    width: 99%;
+    outline: none;
+}
+
+.max {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 90%;
+}
+.max label {
+    margin-bottom: .5rem;
+    color: #ea9c3a;
+}
+.max input {
+    background-color: transparent;
+    border: 0;
+    border-bottom: 1px solid #fff;
+    overflow: hidden;
+    color: #c8cac7;
+    width: 99%;
+    outline: none;
+}
+
+.height {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 90%;
+}
+.height label {
+    margin-bottom: .5rem;
+    color: #ea9c3a;
+}
+.height input {
+    background-color: transparent;
+    border: 0;
+    border-bottom: 1px solid #fff;
+    overflow: hidden;
+    color: #c8cac7;
+    width: 99%;
+    outline: none;
+}
+
+.temperamentSelect {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 0 5% 10px 5%;
+    width: 90%;
+}
+.temperamentSelect label {
+    margin-bottom: .5rem;
+    color: #ea9c3a;
+}
+.temperamentSelect select {
+    background-color: transparent;
+    border: 0;
+    border-bottom: 1px solid #fff;
+    overflow: hidden;
+    width: 100%;
+    outline: none;
+}
+
+strong {
+    font-size: 10px;
+}
+
+.temperamentsChosen {
+    display: flex;
+    align-items: center;
+    margin: 0 5% 0 5%;
+    padding: 0;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.eachTemperament {
+    background-color: #0000004f;
+    display: flex;
+    height: fit-content;
+    height: 2.3rem;
+    padding-left: 8px;
+    border-radius: 4px;
+    color: #c8cac7;
+    box-shadow: -1px 15px 30px -12px black;
+}
+.eachTemperament p {
+    font-size: 14px;
+    padding-bottom: 0;
+    padding-right: 8px;
+}
+.eachTemperament button {
+    background-color: #f96057;
+    font-size: 8px;
+    margin: 0;
+    padding: 0;
+    height: 12px;
+    width: 12px;
+    border-radius: 50%;
+    border: none;
+    margin-top: 5px;
+    margin-right: 5px;
+    transition: 
+        background-color 200ms linear;
+}
+.eachTemperament button:hover {
+    background-color: #b82a22;
+    cursor: pointer;
+}
+
+.addButton {
+    color: #737583;
+    background-color: #14162b;
+    font-size: 1rem;
+    padding: 6px;
+    border-color: transparent;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    transition: 
+        color 200ms linear,
+        transform 200ms linear
+}
+
+.addButton:hover {
+    color: white;
+    transform: scale(1.03);
+}

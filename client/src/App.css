@@ -1,6 +1,12 @@
 .App {
   text-align: center;
   /* background: #1b1b1b */
+  /* background: #D97904; */
+  /* background: #171d2d; */
+  height: 100%;
+  /* width: 100vw; */
+  background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/coc-background.jpg') no-repeat center center fixed;
+  background-size:cover;
 
 }
 

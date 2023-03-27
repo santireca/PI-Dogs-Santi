@@ -1,12 +1,13 @@
 import {createStore, applyMiddleware, compose} from "redux";
 import thunkMiddleware from "redux-thunk";
-import reducer from "./reducer";
+import reducer from "../redux/reducer";
 
-const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose; //This line is just to connect the browser extension redux devtools. Remember to install this
 
-const store = createStore(
+//Here I create my global state store
+const store= createStore(
     reducer,
-    composeEnhancer(applyMiddleware(thunkMiddleware))
-)
+    composeEnhancer(applyMiddleware(thunkMiddleware)) //this is my translator
+);
 
 export default store;

@@ -1,0 +1,213 @@
+.navBar {
+    background-color: #14162b;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    justify-content: center;
+    padding-right: 40px;
+    margin-bottom: 20px;
+}
+
+.dogCreate {
+    color: white;
+    text-decoration:none;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    transition: 
+        color 200ms linear,
+        /* border-bottom 200ms linear */
+        /* transform 200ms linear; */
+}
+
+.home {
+    color: white;
+    text-decoration: none;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    transition: 
+        /* border-bottom 200ms linear */
+        color 200ms linear,
+        /* transform 200ms linear; */
+}
+
+.dogCreate:hover {
+    color: #ea9c3b;
+    /* transform: scale(1.05) */
+}
+
+.home:hover {
+    color: #ea9c3b;
+    /* transform: scale(1.05) */
+}
+
+.filters {
+    background-color: rgba(0, 0, 0, 0.308);
+    overflow: hidden;
+    border: none;
+    border-radius: 14px;
+    margin-left: 5%;
+    margin-right: 5%;
+    padding: 0 20px 0 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 80px;
+    box-shadow: -1px 15px 30px -12px black;
+}
+
+.reloadDogs {
+    color: #737583;
+    /* background-color: #e68d48; */
+    background-color: #14162b;
+    font-size: 1rem;
+    padding: 6px;
+    border-color: transparent;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    transition: 
+        color 200ms linear,
+        transform 200ms linear
+}
+
+.reloadDogs:hover {
+    color: white;
+    transform: scale(1.03);
+}
+
+.sortByName {
+    display: flex;
+    color: white;
+    font-family: 'Be Vietnam Pro', sans-serif;
+}
+.sortByName div{
+    /* background-color: #ea9c3b; */
+    padding: 6px;
+}
+.sortByNameSelect {
+    background-color: transparent;
+    border: 0;
+    border-bottom: 1px solid #fff;
+    overflow: hidden;
+    color: white;
+    width: 126px;
+    outline: none;
+}
+.sortByNameOption {
+    background-color: #14162b;
+    border: 0;
+    color: #fff;
+}
+
+.sortByWeight {
+    display: flex;
+    color: white;
+    font-family: 'Be Vietnam Pro', sans-serif;
+}
+.sortByWeight div{
+    /* background-color: #ea9c3b; */
+    padding: 6px;
+}
+.sortByWeightSelect {
+    background-color: transparent;
+    border: 0;
+    border-bottom: 1px solid #fff;
+    overflow: hidden;
+    color: white;
+    width: 126px;
+    outline: none;
+}
+.sortByWeightOption {
+    background-color: #14162b;
+    border: 0;
+    color: #fff;
+}
+
+.sortByAverageWeight {
+    display: flex;
+    color: white;
+    font-family: 'Be Vietnam Pro', sans-serif;
+}
+.sortByAverageWeight div{
+    /* background-color: #ea9c3b; */
+    padding: 6px;
+}
+.sortByAverageWeightSelect {
+    background-color: transparent;
+    border: 0;
+    border-bottom: 1px solid #fff;
+    overflow: hidden;
+    color: white;
+    width: 126px;
+    outline: none;
+}
+.sortByAverageWeightOption {
+    background-color: #14162b;
+    border: 0;
+    color: #fff;
+}
+
+.filterByTemperament {
+    display: flex;
+    color: white;
+    font-family: 'Be Vietnam Pro', sans-serif;
+}
+.filterByTemperament div{
+    /* background-color: #ea9c3b; */
+    padding: 6px;
+}
+.filterByTemperamentSelect{
+    background-color: transparent;
+    border: 0;
+    border-bottom: 1px solid #fff;
+    overflow: hidden;
+    color: white;
+    width: 126px;
+    outline: none;
+}
+.filterByTemperamentOption {
+    background-color: #14162b;
+    border: 0;
+    color: #fff;
+    
+}
+
+.filterByCreation {
+    display: flex;
+    color: white;
+    font-family: 'Be Vietnam Pro', sans-serif;
+}
+.filterByCreation div{
+    /* background-color: #ea9c3b; */
+    padding: 6px;
+}
+.filterByCreationSelect{
+    background-color: transparent;
+    border: 0;
+    border-bottom: 1px solid #fff;
+    overflow: hidden;
+    color: white;
+    width: 126px;
+    outline: none;
+}
+.filterByCreationSelect:hover {
+    cursor: pointer;
+}
+.filterByCreationOption{
+    background-color: #14162b;
+    border: 0;
+    color: #fff;
+}
+.filterByCreationOption:hover {
+    cursor: pointer;
+}
+
+.dogCards {
+    padding: 50px 15% calc(9.5%) 15%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+
+

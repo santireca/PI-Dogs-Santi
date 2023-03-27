@@ -1,21 +1,25 @@
 import './App.css';
-import { useState, useEffect } from 'react'
-import { Routes, Route, useLocation, useNavigate } from 'react-router-dom'
-import LandingPage from '../src/components/LandingPage/LandingPage'
-import Home from './components/Home/Home';
-import DogCreate from './components/DogCreate/DogCreate';
-import Detail from './components/DogDetail/DogDetail';
+import { Routes, Route, useLocation } from "react-router-dom";
+import LandingPage from './components/LandingPage/LandingPage'
+import Home from "./components/Home/Home";
+import DogDetail from "./components/DogDetail/DogDetail";
+import DogCreate from "./components/DogCreate/DogCreate";
+
+
 
 
 function App() {
+  let location= useLocation()
   return (
-    <div className="App">
-      <Routes> 
-        <Route path = '/' element = {<LandingPage/>} />
-        <Route path = '/home' element = {<Home/>} />
-        <Route path = '/dog' element = {<DogCreate/>} />
-        <Route path='/detail/:id' element={<Detail/>}/>
-      </Routes>
+    <div className='App'>
+      <div className={location.pathname === "/" && "Landing"}>
+        <Routes>
+          <Route exact path= "/" element={<LandingPage/>} />
+          <Route exact path= "/home" element={<Home/>} />
+          <Route exact path= "/detail/:id" element={<DogDetail/>} />
+          <Route exact path= "/dog" element={<DogCreate/>} />
+        </Routes>
+      </div>
     </div>
   );
 }
