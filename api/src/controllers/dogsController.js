@@ -9,7 +9,7 @@ const {API_KEY} = process.env
 
 //This function will bring all the info (.data) from the Api which I need to have. Same info criteria I used to create dogs
 
-const getBreedsFromApi= async()=> {
+const getBreedsFromApi = async()=> {
     let apiData= await axios(`https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`);
     
         let fromApi= await apiData.data.map((inst)=>{

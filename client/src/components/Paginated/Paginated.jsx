@@ -5,7 +5,7 @@ const Paginated = ({dogsPerPage, dogs, pagination}) => {
 
     const pageNumber = [];
 
-    for (let i=0; i <= Math.floor(dogs/dogsPerPage); i++){
+    for (let i=0; i <= Math.floor(dogs/dogsPerPage) - 1; i++){
         pageNumber.push(i+1)
     }
 

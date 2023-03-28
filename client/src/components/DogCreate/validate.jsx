@@ -2,7 +2,7 @@ const validate =({name, height, image, life_span, weightMax, weightMin, temperam
     let errors= {};
     let regexImg= /(http(s?):)([/|.|\w|\s|-])*.(?:jpg|gif|png|pnj)/;
     let regexName= /([0-9])+/;
-    let regexHeight = /^\d{1,2}\s-\s\d{1,2}\s$/;
+    let regexHeight = /^([1-9]|1[0-9]|20) - ([1-9]|1[0-9]|20)$/;
 
     if(!name.trim()) {
         errors.name= "Please choose a name"
@@ -33,9 +33,9 @@ const validate =({name, height, image, life_span, weightMax, weightMin, temperam
     if(!height){
         errors.height= "Please choose a maximun height and a maximun height"
     } 
-    // else if (regexHeight.test(height.trim())){
-    //     errors.height= "Follow the correct order"
-    // }
+    else if (regexHeight.test(height.trim())){
+        errors.height= "Follow the correct order"
+    }
 
     if(!life_span){
         errors.life_span= "Please choose an approximate life span"
@@ -51,14 +51,7 @@ const validate =({name, height, image, life_span, weightMax, weightMin, temperam
     if (!temperaments) {
         errors.temperaments= "Please choose at least one temperament"
     }
-
     return errors
-
- 
-
-
-
-
-
 }
+
 export default validate;

@@ -12,12 +12,27 @@
 .formContainer {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     background: #0000004f;
     border-radius: 14px;
     width: 50%;
     height: 80%;
     box-shadow: -1px 15px 30px -12px black;
     
+}
+
+.title {
+    display: flex;
+    justify-content: center;
+    
+}
+.title h3 {
+    background-color: #0000008c;
+    width: fit-content;
+    padding: 8px 25px 8px 25px;
+    color: #cecec8;
+    box-shadow: -1px 15px 30px -12px black;
+    border-radius: 14px;
 }
 
 .bothSides {
@@ -62,6 +77,7 @@
     color: #c8cac7;
     width: 100%;
     outline: none;
+    font-size: 1rem;
 }
 
 .image {
@@ -82,6 +98,7 @@
     color: #c8cac7;
     width: 100%;
     outline: none;
+    font-size: 1rem;
 }
 
 .life {
@@ -102,6 +119,7 @@
     color: #c8cac7;
     width: 100%;
     outline: none;
+    font-size: 1rem;
 }
 
 .min {
@@ -122,6 +140,7 @@
     color: #c8cac7;
     width: 99%;
     outline: none;
+    font-size: 1rem;
 }
 
 .max {
@@ -142,6 +161,7 @@
     color: #c8cac7;
     width: 99%;
     outline: none;
+    font-size: 1rem;
 }
 
 .height {
@@ -162,6 +182,7 @@
     color: #c8cac7;
     width: 99%;
     outline: none;
+    font-size: 1rem;
 }
 
 .temperamentSelect {
@@ -185,16 +206,19 @@
 }
 
 strong {
-    font-size: 10px;
+    font-size: 12px;
+    color: rgba(255, 0, 0, 0.603);
+    padding-top: 2px;
+    font-weight: 300;
 }
 
 .temperamentsChosen {
     display: flex;
-    align-items: center;
-    margin: 0 5% 0 5%;
+    margin: 0 5% 2.3rem 5%;
     padding: 0;
     gap: 10px;
     flex-wrap: wrap;
+    height: 7rem;
 }
 
 .eachTemperament {
@@ -231,11 +255,17 @@ strong {
     cursor: pointer;
 }
 
+.addButtonContainer {
+    display: flex;
+    justify-content: center;
+}
+
 .addButton {
+    width: fit-content;
     color: #737583;
     background-color: #14162b;
-    font-size: 1rem;
-    padding: 6px;
+    font-size: 1.2rem;
+    padding: 5px 20px 5px 20px;
     border-color: transparent;
     border-radius: 4px;
     cursor: pointer;

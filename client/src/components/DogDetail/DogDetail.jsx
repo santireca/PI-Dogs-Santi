@@ -1,5 +1,5 @@
 import React from 'react';
-import { getDogDetail } from '../../redux/actions';
+import { getDogDetail, resetDetail } from '../../redux/actions';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
@@ -8,11 +8,14 @@ import styles from '../DogDetail/dogDetail.module.css'
 const Detail = () => {
   let dispatch= useDispatch();
   let { id }= useParams();
-  const dogDetail= useSelector((state) => state.dogDetail);
+  const dogDetail = useSelector((state) => state.dogDetail);
 
   useEffect(() => {
     dispatch(getDogDetail(id))
-  }, [])
+    return ()=> {
+      dispatch(resetDetail()) //this action avoids saving the las visited detail so that when you see a new dogDetail you don´t see the previously seen dog
+    }
+  }, [dispatch])
 
   return (
     
@@ -20,7 +23,7 @@ const Detail = () => {
       <div className={styles.detailContainer}>
 
         <div className={styles.imgContainer}>
-          <img src={dogDetail?.image ? dogDetail.image : "img"} alt="img" />
+          <img src={dogDetail?.image ? dogDetail.image : "img"} alt="Wait" />
         </div>
 
         <div className={styles.dataContainer}>

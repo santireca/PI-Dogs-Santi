@@ -1,3 +1,11 @@
+/* .homeCont {
+    background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/coc-background.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center;
+} */
+
 .navBar {
     background-color: #14162b;
     height: 50px;
@@ -202,7 +210,7 @@
 }
 
 .dogCards {
-    padding: 50px 15% calc(9.5%) 15%;
+    padding: 50px 15% 50px 15%;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;

@@ -16,11 +16,13 @@
     box-shadow: -1px 15px 30px -12px black;
     z-index: 9999;
     transition: 
-        transform 200ms linear;
+        transform 200ms linear,
+        background-color 200ms linear;
 }
 
 .dogCard:hover {
     transform: scale(1.02) translateZ(0);
+    background-color: rgba(0, 0, 0, 0.623);
 }
 
 .dogImage {
@@ -39,7 +41,7 @@
     font-size: 12px;
     font-weight: 700;
     margin-bottom: 3px;
-    color: black
+    color: #cfc4c0
 }
 
 .name {

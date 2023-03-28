@@ -7,7 +7,12 @@ import style from '../DogCreate/dogCreate.module.css'
 const Form = () => {
 
   const dispatch = useDispatch();
-  const temperaments= useSelector((state)=> state.temperaments) //global state
+  // const temperaments= useSelector((state)=> state.temperaments) //global state
+  const temperaments = useSelector(state => [...state.temperaments].sort(
+    function (a, b) {
+      if (a < b) return -1;
+      else return 1;
+    }))
 
   const [inputs, setInputs]= useState({ //local state
       name: "",
@@ -75,19 +80,19 @@ const Form = () => {
 
       <div className={style.formContainer}>
 
-        <div>
+        <div className={style.title}>
           <h3>Create your dog</h3>
         </div>
 
         <div>
-          <form action="">
+          <form autoComplete="off" action="">
 
             <div className={style.bothSides}>
 
               <div className={style.leftSide}>
 
                 <div className={style.name}>
-                  <label>Name: </label>
+                  <label>Name</label>
                   <input 
                   type="text" 
                   name="name"
@@ -98,7 +103,7 @@ const Form = () => {
                 </div>
 
                 <div className={style.image}>
-                  <label>Image: </label>
+                  <label>Image</label>
                   <input 
                   type="text" 
                   name="image"
@@ -109,7 +114,7 @@ const Form = () => {
                 </div>
 
                 <div className={style.life}>
-                  <label>Life expectancy: </label>
+                  <label>Life expectancy</label>
                     <input 
                     type="text" 
                     name="life_span"
@@ -125,7 +130,7 @@ const Form = () => {
               <div className={style.rightSide}>
 
                 <div className={style.min}>
-                  <label>Min: </label> 
+                  <label>Min. weight (kg)</label> 
                   <input 
                   type="text" 
                   name="weightMin"
@@ -137,7 +142,7 @@ const Form = () => {
                 </div>
 
                 <div className={style.max}>
-                  <label>Max: </label>
+                  <label>Max weight (kg)</label>
                   <input 
                   type="text" 
                   name="weightMax"
@@ -149,7 +154,7 @@ const Form = () => {
                 </div>
 
                 <div className={style.height}>
-                  <label>Height: </label>
+                  <label>Height (cm)</label>
                     <input 
                     type="text" 
                     name="height"
@@ -168,7 +173,7 @@ const Form = () => {
             
           </form>
             <div className={style.temperamentSelect}>
-                <label>Temperaments: </label>
+                <label>Temperaments </label>
                   <select value={temperaments} onChange={(event)=>handleTemperamentChoices(event)}>
                     <option value="all"></option>
                     {temperaments.map((temp)=> {
@@ -195,16 +200,21 @@ const Form = () => {
                 }
                 </div>
 
-                <button type="submit" onClick={(event)=>handleSubmit(event)} className={style.addButton} disabled= {
-                  error.name || error.image || error.weightMin || error.weightMax || error.height || error.life_span || error.temperaments || !inputs.name
-                }>
-                  Add my dog
-                </button>
             
 
             </div>
           
         </div>
+
+          <div className={style.addButtonContainer}>
+
+            <button type="submit" onClick={(event)=>handleSubmit(event)} className={style.addButton} disabled= {
+              error.name || error.image || error.weightMin || error.weightMax || error.height || error.life_span || error.temperaments || !inputs.name
+            }>
+              Let's go
+            </button>
+
+          </div>
 
       </div>
 

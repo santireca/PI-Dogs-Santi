@@ -1,6 +1,6 @@
 import axios from "axios";
 import { FILTER_BY_ORIGIN, GET_ALL_BREEDS, ORDER_BY_NAME, ORDER_BY_WEIGHT, GET_ALL_TEMPS, FILTER_BY_TEMPER,
-GET_DOGS_BY_NAME, GET_NAME, GET_DOG_DETAIL, SET_CURRENT_PAGE, CREATE_DOG } from "../redux/action-types";
+GET_DOGS_BY_NAME, GET_NAME, GET_DOG_DETAIL, RESET_DETAIL, SET_CURRENT_PAGE } from "../redux/action-types";
 
 export const getAllBreeds = ()=> {
     return async function(dispatch){
@@ -23,35 +23,35 @@ export const getAllTemperaments = () => {
     }
 }
 
-export const orderByName= (payload)=> {
+export const orderByName = (payload)=> {
     return {
         type: ORDER_BY_NAME,
         payload
     }
 }
 
-export const orderByWeight= (payload)=> {
+export const orderByWeight = (payload)=> {
     return {
         type: ORDER_BY_WEIGHT,
         payload
     }
 }
 
-export const filterByOrigin= (payload)=> {
+export const filterByOrigin = (payload)=> {
     return {
         type: FILTER_BY_ORIGIN,
         payload
     }
 }
 
-export const filterByTemper= (payload)=> {
+export const filterByTemper = (payload)=> {
     return {
         type: FILTER_BY_TEMPER,
         payload
     }
 }
 
-export const getDogsByName= (name)=> {
+export const getDogsByName = (name)=> {
     return async function (dispatch){
         try {
             let json = await axios (`http://localhost:3001/dogs?name=${name}`)
@@ -73,7 +73,7 @@ export const getName = (name)=> {
 }
 
 
-export const getDogDetail= (id)=> {
+export const getDogDetail = (id)=> {
     return async function(dispatch){
         let json = await axios (`http://localhost:3001/dogs/${id}`)
 
@@ -84,14 +84,20 @@ export const getDogDetail= (id)=> {
     }
 }
 
-export const createNewDog= (payload)=> {
+export const createNewDog = (payload)=> {
     return async function(dispatch){
         let newDog= await axios.post("http://localhost:3001/dogs", payload);
         return newDog
     }
 }
 
-export const setCurrentPage= (payload)=> {
+export const resetDetail = ()=> {
+    return {
+        type: RESET_DETAIL
+    }
+}
+
+export const setCurrentPage = (payload)=> {
     return {
         type: SET_CURRENT_PAGE,
         payload

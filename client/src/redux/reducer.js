@@ -1,4 +1,4 @@
-import { FILTER_BY_ORIGIN, GET_ALL_BREEDS, ORDER_BY_NAME, ORDER_BY_WEIGHT, FILTER_BY_TEMPER, GET_ALL_TEMPS, GET_DOGS_BY_NAME, GET_NAME, GET_DOG_DETAIL, CREATE_DOG, SET_CURRENT_PAGE} from "../redux/action-types";
+import { FILTER_BY_ORIGIN, GET_ALL_BREEDS, ORDER_BY_NAME, ORDER_BY_WEIGHT, FILTER_BY_TEMPER, GET_ALL_TEMPS, GET_DOGS_BY_NAME, GET_NAME, GET_DOG_DETAIL, CREATE_DOG, RESET_DETAIL, SET_CURRENT_PAGE} from "../redux/action-types";
 
 //here I create my reducer which will handle my global state
 
@@ -7,6 +7,7 @@ const initialState = {
     dogDetail: {},
     temperaments: [],
     allDogs: [], //this is a copy of all dogs which endures
+    currentPage: 1,
 }
 
 const reducer = (state = initialState, action) => {
@@ -130,6 +131,12 @@ const reducer = (state = initialState, action) => {
         case CREATE_DOG:
             return {
                 ...state,
+            }
+
+        case RESET_DETAIL: 
+            return {
+                ...state,
+                dogDetail: {}
             }
 
         case SET_CURRENT_PAGE: {
